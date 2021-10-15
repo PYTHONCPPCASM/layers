@@ -8,13 +8,53 @@ Use loops to make a song.
 `;
 
 characters = [`
+  yy  
+ yYYy 
+yYyyYy
+yYyyYy
+ YyyY
+  yy
+`,`
+B P pb
+ pbp  
+B pbp 
+bpbp P
+pbp   
+BpbB B
+`,`
+  lL 
+ LLlL
+ lLLL
+  yr
+ rYly
+  Ly
+`,`
+  rr
+ r rr
+rrrr rr
+  YlYl
+  YYYY
+`,`
+R    r
+ r  R 
+  Rr
+ R  r
+r    R
+`,`
+  ll
+  ll l
 llllll
-cccccc
-cc  ll
-cccccc
-cccccc
+l ll
+  l ll
+ ll  l
+`,`
+gG  Gg
+ gGGg
+G gg G
+gG  Gg
+ gGGg
+  gg
 `];
-
 
 options = {
   viewSize: { x: 200, y: 100 },
@@ -33,6 +73,7 @@ const S = {
   */
 let sounds = [ "coin", "laser", "explosion", "powerUp", "hit", "jump", "select"];
 let colors = [ "black", "purple", "yellow", "green"];
+let charArray = ["a", "b", "c", "d", "e", "f", "g"];
 /**
  * @typedef {{
   * inputs: number[]
@@ -126,7 +167,7 @@ function update() {
   //this is where to draw the sprite, for each numberOfLayers
   patterns.forEach((p) => {
     color("black");
-    char("a", p.pos);
+    char(charArray[p.n], p.pos);
     //this condition determine how the
     if(barLength / 2 === p.pos.x){
       console.log("barlength match!");
@@ -178,9 +219,10 @@ function addKeyStrokeToLayer(barLength, numberOfLayers){
   
   const posX = barLength / 2;
   const posY = numberOfLayers * S.V_OFFSET;
-  
+  const n = numberOfLayers;
   patterns.push({
-    pos: vec(posX, posY)
+    pos: vec(posX, posY),
+    n: numberOfLayers
   });
 
   direction = rnd(0.16, -0.16);
