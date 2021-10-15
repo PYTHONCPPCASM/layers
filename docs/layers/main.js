@@ -219,10 +219,10 @@ function addKeyStrokeToLayer(barLength, numberOfLayers){
   
   const posX = barLength / 2;
   const posY = numberOfLayers * S.V_OFFSET;
-  const n = numberOfLayers;
+  
   patterns.push({
     pos: vec(posX, posY),
-    n: numberOfLayers
+    n: numberOfLayers - 1
   });
 
   direction = rnd(0.16, -0.16);
